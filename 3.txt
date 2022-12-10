@@ -1,0 +1,22 @@
+In this case,
+we have 100 APIs and 1000 users, LET Number of APIS = n and Number of users = m
+Therefore, we will make an ARRAY called APICOUNT[n][m], APITIME[n][m].
+TWO 2D array of dimensions n X m, which will be initialsed with zero and if the jth user calls the ith api, 
+APITIME[i][j] would be increased with response_time of the ith API.
+APICOUNT[i][j] would be increased by 1.
+Now as we have 1 million requests per day, so each updation is easily possible in O(1).
+
+Now,
+1 : Get the API with maximum average response time across the users.
+    For this operation, we need to find Avg response time of the ith api, we need to average the response_time around all m users,
+    Therefore, this API would be possible in O(n*m)
+
+2 : Get the API with maximum average response time for each user.
+    For the ith user, we need to find max average response_time of each api, we need to find max(APITIME[i][j] / APICOUNT[i][j]) for all i APIs,
+    for a user j.
+    Therefore, this API would also cost a time complexity of O(n*m);
+
+For storing our array, we could try a number of techniques like fragmentation, using Master-Slave Architecture ETC.
+Load balancing could be done for a request to reach the desirable server.
+For the 3 API calls, we could first do query optimisation and divide our query and apply it on different servers,
+then after getting the desired result we could possible do a join.
